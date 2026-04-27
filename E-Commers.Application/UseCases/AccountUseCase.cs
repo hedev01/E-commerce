@@ -19,9 +19,9 @@ namespace E_Commers.Application.Writes
 
     public class AccountUseCases : IAccountUseCases
     {
-        private readonly IAccountRepository _accountRepository; // Repository که فقط کارهای DB رو انجام میده
-        private readonly UserManager<ApplicationUserIdentity> _userManager; // UserManager به UseCase تزریق میشه
-        private readonly IJwtTokenService _jwtTokenService; // سرویس تولید توکن
+        private readonly IAccountRepository _accountRepository; 
+        private readonly UserManager<ApplicationUserIdentity> _userManager; 
+        private readonly IJwtTokenService _jwtTokenService; 
 
         // Constructor Injection
         public AccountUseCases(IAccountRepository accountRepository, UserManager<ApplicationUserIdentity> userManager, IJwtTokenService jwtTokenService)
@@ -33,16 +33,13 @@ namespace E_Commers.Application.Writes
 
         public async Task<IdentityResult> RegisterUser(RegisterUserDTO registerUserDto)
         {
-            // Repository فقط مسئول ایجاد کاربر در پایگاه داده است
-            // ViewModel/DTO ها باید در Controller یا لایه Presentation اعتبارسنجی شوند
-            // یا اگر نیاز به اعتبارسنجی پیچیده کسب و کار است، در Use Case انجام شود.
-            // کد فعلی شما در Repository برای RegisterUser درست به نظر میرسد.
+            
             return await _accountRepository.RegisterUser(registerUserDto);
         }
 
         public async Task<(string token, DateTime? expiryDate, string errorMessage)> LoginUser(LoginUserDTO loginUserDto)
         {
-            // 1. احراز هویت اولیه با UserManager (که به Use Case تزریق شده)
+            
             ApplicationUserIdentity userFromDB = await _userManager.FindByNameAsync(loginUserDto.UserName);
             if (userFromDB is null)
             {
@@ -55,16 +52,16 @@ namespace E_Commers.Application.Writes
                 return (null, null, "نام کاربری یا رمز عبور اشتباه است.");
             }
 
-            // 2. دریافت نقش‌ها (این هم می‌تواند به Repository یا سرویس جداگانه منتقل شود اگر پیچیده باشد)
+            
             var roles = await _userManager.GetRolesAsync(userFromDB);
 
-            // 3. تولید توکن با استفاده از سرویس JWT
+            
             string token = _jwtTokenService.GenerateToken(userFromDB, roles);
             var tokenHandler = new JwtSecurityTokenHandler();
             var jwtToken = tokenHandler.ReadToken(token) as JwtSecurityToken;
             DateTime expiryDate = jwtToken.ValidTo;
 
-            return (token, expiryDate, null); // عدم وجود خطا
+            return (token, expiryDate, null); 
         }
     }
 }

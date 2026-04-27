@@ -22,20 +22,17 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-// 1. رجیستر کردن UserRepository (همانطور که بود)
+
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<IRoleRepository , RoleRepository>();
 builder.Services.AddScoped<IRoleUseCase, RoleUseCase>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserUseCase , UserUseCase>();
 
-// 2. رجیستر کردن JwtTokenService
-// دقت کنید که فضای نام دقیق کلاس JwtTokenService را وارد کنید
-// فرض می کنیم کلاس شما در E_Commers.Application.Services قرار دارد
+
 builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 
-// 3. رجیستر کردن AccountUseCases (همانطور که بود)
-// اطمینان حاصل کنید که فضای نام Application.Writes درست است
+
 builder.Services.AddScoped<IAccountUseCases, AccountUseCases>();
 //builder.Services.AddScoped<AccountUseCases>();
 builder.Services.AddDbContext<Context>(option => {

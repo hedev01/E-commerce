@@ -21,8 +21,7 @@ namespace E_Commers.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterUserDTO registerUserDto)
         {
-            // اعتبارسنجی ورودی ها (مثلاً با FluentValidation یا Data Annotations روی DTO)
-            // ...
+            
 
             var result = await _accountUseCases.RegisterUser(registerUserDto);
 
@@ -32,7 +31,7 @@ namespace E_Commers.Controllers
             }
             else
             {
-                // جمع آوری خطاهای IdentityResult
+                
                 var errors = result.Errors.Select(e => e.Description);
                 return BadRequest(new { Message = "خطا در ثبت نام", Errors = errors });
             }
