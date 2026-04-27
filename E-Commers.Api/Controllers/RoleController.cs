@@ -1,5 +1,6 @@
 ﻿using E_Commers.Application.InterFaces;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace E_Commers.Controllers
@@ -26,6 +27,27 @@ namespace E_Commers.Controllers
             else
             {
                 return BadRequest("Not Created Role");
+            }
+        }
+        [HttpGet]
+        public IActionResult GetAllRoles()
+        {
+            IQueryable<IdentityRole> result = _roleUseCase.getAllRoles();
+            return Ok(result);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteRole(string roleName)
+        {
+            IdentityResult result = await _roleUseCase.DeleteRoleById(roleName);
+            if (result.Succeeded)
+            {
+                return Ok("Role Deleted");
+            }
+            else
+            {
+
+                return BadRequest(result.Errors);
             }
         }
     }

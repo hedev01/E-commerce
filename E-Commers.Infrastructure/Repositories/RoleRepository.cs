@@ -24,5 +24,24 @@ namespace E_Commers.Infrastructure.Repositories
             }
             return false;
         }
+
+        public IQueryable<IdentityRole> GetAllRoles()
+        {
+          IQueryable<IdentityRole> result = roleManager.Roles;
+          return result;
+        }
+
+        public async Task<IdentityResult> DeleteRoleById(string roleName)
+        {
+          IdentityRole findRole = await  roleManager.FindByNameAsync(roleName);
+          IdentityResult identityResult = new IdentityResult();
+          if (findRole != null)
+          {
+              identityResult = await roleManager.DeleteAsync(findRole);
+            
+          }
+          return identityResult;
+
+        }
     }
 }
