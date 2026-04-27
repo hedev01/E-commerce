@@ -1,0 +1,17 @@
+E:\c#Project\E-Commers.Infrastructure\bin\Debug\net8.0\E-Commers.Infrastructure.deps.json
+E:\c#Project\E-Commers.Infrastructure\bin\Debug\net8.0\E-Commers.Infrastructure.runtimeconfig.json
+E:\c#Project\E-Commers.Infrastructure\bin\Debug\net8.0\E-Commers.Infrastructure.dll
+E:\c#Project\E-Commers.Infrastructure\bin\Debug\net8.0\E-Commers.Infrastructure.pdb
+E:\c#Project\E-Commers.Infrastructure\bin\Debug\net8.0\E-Commers.Core.dll
+E:\c#Project\E-Commers.Infrastructure\bin\Debug\net8.0\E-Commers.Core.pdb
+E:\c#Project\E-Commers.Infrastructure\obj\Debug\net8.0\E-Commers.Infrastructure.csproj.AssemblyReference.cache
+E:\c#Project\E-Commers.Infrastructure\obj\Debug\net8.0\E-Commers.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+E:\c#Project\E-Commers.Infrastructure\obj\Debug\net8.0\E-Commers.Infrastructure.AssemblyInfoInputs.cache
+E:\c#Project\E-Commers.Infrastructure\obj\Debug\net8.0\E-Commers.Infrastructure.AssemblyInfo.cs
+E:\c#Project\E-Commers.Infrastructure\obj\Debug\net8.0\E-Commers.Infrastructure.csproj.CoreCompileInputs.cache
+E:\c#Project\E-Commers.Infrastructure\obj\Debug\net8.0\E-Commer.0BD535CA.Up2Date
+E:\c#Project\E-Commers.Infrastructure\obj\Debug\net8.0\E-Commers.Infrastructure.dll
+E:\c#Project\E-Commers.Infrastructure\obj\Debug\net8.0\refint\E-Commers.Infrastructure.dll
+E:\c#Project\E-Commers.Infrastructure\obj\Debug\net8.0\E-Commers.Infrastructure.pdb
+E:\c#Project\E-Commers.Infrastructure\obj\Debug\net8.0\E-Commers.Infrastructure.genruntimeconfig.cache
+E:\c#Project\E-Commers.Infrastructure\obj\Debug\net8.0\ref\E-Commers.Infrastructure.dll

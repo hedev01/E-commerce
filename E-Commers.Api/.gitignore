@@ -1,0 +1,41 @@
+    # Ignore Visual Studio files
+    *.sln.docstates
+    *.suo
+    *.user
+    *.userosscache
+    *.sln.user
+    *.DotSettings.user
+    *.vssscc
+    *.vspscc
+    *.pidb
+    *.suo
+    *.user
+    *.resharper
+
+    # Ignore build output
+    [Bb]in/
+    [Oo]bj/
+
+    # Ignore NuGet packages folder
+    packages/
+
+    # Ignore ASP.NET Core user secrets
+    secrets.json
+    .vs/
+
+    # Ignore App_Data folder for ASP.NET
+    App_Data/
+
+    # Ignore Git files
+    .git/
+    .gitignore
+
+    # Ignore IDE-specific files (e.g., VS Code)
+    .vscode/
+
+    # Ignore other common files
+    *.log
+    *.tmp
+    *.bak
+    node_modules/
+        
