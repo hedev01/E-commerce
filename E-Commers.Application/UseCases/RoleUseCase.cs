@@ -31,5 +31,10 @@ namespace E_Commers.Application.UseCases
         {
             return await _roleRepository.DeleteRoleById(roleName);
         }
+
+        public async Task<IdentityResult> UpdateRoleById(string roleName, string newRoleName)
+        {
+            return await _roleRepository.UpdateRoleById(roleName, newRoleName);
+        }
     }
 }

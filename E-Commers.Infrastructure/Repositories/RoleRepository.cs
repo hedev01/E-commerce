@@ -43,5 +43,18 @@ namespace E_Commers.Infrastructure.Repositories
           return identityResult;
 
         }
+
+        public async Task<IdentityResult> UpdateRoleById(string roleName , string newRoleName)
+        {
+            IdentityRole findRole =   await roleManager.FindByNameAsync(roleName);
+            IdentityResult identityResult = new IdentityResult();
+            if (findRole != null)
+            {
+               findRole.Name = newRoleName;
+               identityResult =   await roleManager.UpdateAsync(findRole);
+            }
+
+            return identityResult;
+        }
     }
 }

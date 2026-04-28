@@ -13,6 +13,7 @@ namespace E_Commers.Application.InterFaces
         IQueryable<IdentityRole> getAllRoles();
 
         Task<IdentityResult> DeleteRoleById(string roleName);
+        Task<IdentityResult> UpdateRoleById(string roleName, string newRoleName);
 
     }
 }

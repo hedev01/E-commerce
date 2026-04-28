@@ -50,5 +50,20 @@ namespace E_Commers.Controllers
                 return BadRequest(result.Errors);
             }
         }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateRole(string roleName, string newRoleName)
+        {
+           IdentityResult result  = await _roleUseCase.UpdateRoleById(roleName, newRoleName);
+           if (result.Succeeded)
+           {
+               return Ok("Updated Role");
+
+           }
+           else
+           {
+               return BadRequest(result.Errors);
+           }
+        }
     }
 }

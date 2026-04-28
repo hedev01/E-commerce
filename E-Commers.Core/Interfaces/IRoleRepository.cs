@@ -12,6 +12,7 @@ namespace E_Commers.Core.Interfaces
         Task<bool> CreateRole(string roleName);
         IQueryable<IdentityRole> GetAllRoles();
         Task<IdentityResult> DeleteRoleById(string roleName);
+        Task<IdentityResult> UpdateRoleById(string roleName , string newRoleName);
 
     }
 }
