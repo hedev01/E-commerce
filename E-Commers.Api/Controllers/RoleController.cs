@@ -1,4 +1,5 @@
 ﻿using E_Commers.Application.InterFaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -52,6 +53,7 @@ namespace E_Commers.Controllers
         }
 
         [HttpPut]
+        [Authorize("Admin")]
         public async Task<IActionResult> UpdateRole(string roleName, string newRoleName)
         {
            IdentityResult result  = await _roleUseCase.UpdateRoleById(roleName, newRoleName);
