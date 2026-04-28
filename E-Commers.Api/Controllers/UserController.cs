@@ -33,6 +33,7 @@ namespace E_Commers.Controllers
             }
         }
         [HttpGet]
+        [Authorize("Admin")]
         public IQueryable<ApplicationUserIdentity> GetAllUsers()
         {
             return _userUseCase.GetAllUsers();
