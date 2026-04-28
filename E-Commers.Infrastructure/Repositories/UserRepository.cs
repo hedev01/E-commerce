@@ -23,5 +23,11 @@ namespace E_Commers.Infrastructure.Repositories
             var result = await userManager.CreateAsync(user);
             return result;
         }
+
+        public IQueryable<ApplicationUserIdentity> GetAllUsers()
+        {
+          IQueryable<ApplicationUserIdentity> users =  userManager.Users;
+          return users;
+        }
     }
 }

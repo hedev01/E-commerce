@@ -1,5 +1,6 @@
 ﻿using E_Commers.Application.InterFaces;
 using E_Commers.Core.DTO;
+using E_Commers.Core.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -30,6 +31,11 @@ namespace E_Commers.Controllers
                 return BadRequest(result.Errors);
 
             }
+        }
+        [HttpGet]
+        public IQueryable<ApplicationUserIdentity> GetAllUsers()
+        {
+            return _userUseCase.GetAllUsers();
         }
     }
 }
