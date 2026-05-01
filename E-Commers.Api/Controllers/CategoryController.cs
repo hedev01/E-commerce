@@ -29,5 +29,19 @@ namespace E_Commers.Controllers
               return BadRequest(result.ErrorMessage);
           }
         }
+
+        [HttpGet]
+        public IActionResult GetCategory()
+        {
+           var result = _categoryUseCase.GetAllCategory();
+           if (result.IsSuccess.GetValueOrDefault())
+           {
+               return Ok(result);
+           }
+           else
+           {
+               return BadRequest();
+           }
+        }
     }
 }

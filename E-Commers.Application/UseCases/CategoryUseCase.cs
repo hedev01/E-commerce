@@ -18,9 +18,14 @@ namespace E_Commers.Application.UseCases
         {
             _categoryRepository = categoryRepository;
         }
-        public async Task<Result<CategoryEntity>> AddCategory(CategoryEntity category)
+        public async Task<Result<CategoryEntity>> AddCategory(CategoryEntity entity)
         {
-            return await _categoryRepository.AddCategory(category);
+            return await _categoryRepository.AddCategory(entity);
+        }
+
+        public Result<List<CategoryEntity>> GetAllCategory()
+        {
+            return _categoryRepository.GetAllCategory();
         }
     }
 }

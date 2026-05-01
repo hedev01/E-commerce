@@ -11,5 +11,6 @@ namespace E_Commers.Core.Interfaces
     public interface ICategoryRepository
     {
         Task<Result<CategoryEntity>> AddCategory(CategoryEntity category);
+        Result<List<CategoryEntity>> GetAllCategory();
     }
 }

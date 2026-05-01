@@ -10,6 +10,7 @@ namespace E_Commers.Application.InterFaces
 {
     public interface ICategoryUseCase
     {
-        Task<Result<CategoryEntity>> AddCategory(CategoryEntity category);
+        Task<Result<CategoryEntity>> AddCategory(CategoryEntity entity);
+        Result<List<CategoryEntity>> GetAllCategory();
     }
 }

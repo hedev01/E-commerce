@@ -30,11 +30,17 @@ namespace E_Commers.Infrastructure.Repositories
             CategoryEntity categoryEntity = new CategoryEntity()
             {
                 Name = category.Name,
-              //  Id = category.Id
-            }; 
-             _context.Categories.Add(categoryEntity);
-           await  _context.SaveChangesAsync();
-           return Result<CategoryEntity>.Success(categoryEntity);
+                //  Id = category.Id
+            };
+            _context.Categories.Add(categoryEntity);
+            await _context.SaveChangesAsync();
+            return Result<CategoryEntity>.Success(categoryEntity);
+        }
+
+        public Result<List<CategoryEntity>> GetAllCategory()
+        {
+            var result = _context.Categories.ToList();
+            return Result<List<CategoryEntity>>.Success(result);
         }
     }
 }
