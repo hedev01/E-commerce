@@ -4,7 +4,9 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using E_Commers.Core.Entities;
 using E_Commers.Core.Identity;
 using E_Commers.Infrastructure.Services;
 using Microsoft.Extensions.Configuration;
@@ -50,6 +52,39 @@ namespace E_Commers.Application.Services
                 signingCredentials: signingCredentials);
 
             return new JwtSecurityTokenHandler().WriteToken(mytoken);
+        }
+
+        public JwtEntity DecodeJwtToken(string jwtToken)
+        {
+            if (jwtToken.IsNullOrEmpty())
+            {
+                return new JwtEntity()
+                {
+                    WarningMessage = "Token is required"
+                };
+            }
+
+            try
+            {
+                var handler = new JwtSecurityTokenHandler();
+                var token = handler.ReadJwtToken(jwtToken);
+                var header = token.Header;
+                var payload = token.Payload;
+                var headerJson = JsonSerializer.Serialize(header);
+                var payloadJson = JsonSerializer.Serialize(payload);
+                return new JwtEntity()
+                {
+                    Header = JsonDocument.Parse(headerJson).RootElement,
+                    Payload = JsonDocument.Parse(payloadJson).RootElement
+                };
+            }
+            catch (Exception e)
+            {
+                return new JwtEntity()
+                {
+                    WarningMessage = e.Message
+                };
+            }
         }
     }
 }

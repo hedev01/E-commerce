@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using E_Commers.Application.InterFaces;
 using E_Commers.Core.DTO;
+using E_Commers.Core.Entities;
 using E_Commers.Core.Identity;
 using E_Commers.Core.Interfaces;
 using Microsoft.AspNetCore.Identity;
@@ -27,6 +28,11 @@ namespace E_Commers.Application.UseCases
         public IQueryable<ApplicationUserIdentity> GetAllUsers()
         {
             return _userRepository.GetAllUsers();
+        }
+
+        public async Task<UpdateUserEntity> UpdateUserByName(string userName, RegisterUserDTO registerUserDto)
+        {
+            return await _userRepository.UpdateUserByName(userName, registerUserDto);
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using System.Text;
 using E_Commers.Application.InterFaces;
 using E_Commers.Application.Services;
@@ -28,9 +29,14 @@ builder.Services.AddScoped<IRoleRepository , RoleRepository>();
 builder.Services.AddScoped<IRoleUseCase, RoleUseCase>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserUseCase , UserUseCase>();
+builder.Services.AddScoped<ICategoryRepository , CategoryRepository>();
+builder.Services.AddScoped<ICategoryUseCase , CategoryUseCase>();
+
 
 
 builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
+
+builder.Services.AddScoped<IJwtUseCase, JwtUseCase>();
 
 
 builder.Services.AddScoped<IAccountUseCases, AccountUseCases>();
@@ -49,7 +55,7 @@ builder.Services.AddCors(options => {
 ///this for make authorization to Admin
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
+    options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
 });
 
 builder.Services.AddIdentity<ApplicationUserIdentity, IdentityRole>().AddEntityFrameworkStores<Context>();
@@ -71,7 +77,8 @@ builder.Services.AddAuthentication(options =>
         ValidAudience = builder.Configuration["JWT:ValidAud"],
         IssuerSigningKey =
             new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(builder.Configuration["JWT:SecritKey"]))
+                Encoding.UTF8.GetBytes(builder.Configuration["JWT:SecritKey"])),
+        RoleClaimType = ClaimTypes.Role
     };
 });
 
@@ -87,6 +94,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseCors("MyPolicy");
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

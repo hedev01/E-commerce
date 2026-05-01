@@ -31,6 +31,7 @@ namespace E_Commers.Controllers
             }
         }
         [HttpGet]
+        [Authorize("Admin")]
         public IActionResult GetAllRoles()
         {
             IQueryable<IdentityRole> result = _roleUseCase.getAllRoles();
@@ -38,6 +39,7 @@ namespace E_Commers.Controllers
         }
 
         [HttpDelete]
+        [Authorize("Admin")]
         public async Task<IActionResult> DeleteRole(string roleName)
         {
             IdentityResult result = await _roleUseCase.DeleteRoleById(roleName);
