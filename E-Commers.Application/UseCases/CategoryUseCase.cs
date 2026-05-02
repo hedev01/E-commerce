@@ -27,5 +27,15 @@ namespace E_Commers.Application.UseCases
         {
             return _categoryRepository.GetAllCategory();
         }
+
+        public async Task<Result<CategoryEntity>> GetCategoryById(int id)
+        {
+            return await _categoryRepository.GetCategoryById(id);
+        }
+
+        public async Task<Result<CategoryEntity>> UpdateCategoryById(string name, int id)
+        {
+            return await _categoryRepository.UpdateCategoryById(name, id);
+        }
     }
 }

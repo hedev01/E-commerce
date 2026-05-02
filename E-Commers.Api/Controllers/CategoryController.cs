@@ -19,28 +19,57 @@ namespace E_Commers.Controllers
         [HttpPost]
         public async Task<IActionResult> AddCategory(CategoryEntity category)
         {
-          var result = await  _categoryUseCase.AddCategory(category);
-          if (result.IsSuccess.GetValueOrDefault())
-          {
-              return Ok(result.Value);
-          }
-          else
-          {
-              return BadRequest(result.ErrorMessage);
-          }
+            var result = await _categoryUseCase.AddCategory(category);
+            if (result.IsSuccess.GetValueOrDefault())
+            {
+                return Ok(result.Value);
+            }
+            else
+            {
+                return BadRequest(result.ErrorMessage);
+            }
         }
 
         [HttpGet]
         public IActionResult GetCategory()
         {
-           var result = _categoryUseCase.GetAllCategory();
+            var result = _categoryUseCase.GetAllCategory();
+            if (result.IsSuccess.GetValueOrDefault())
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetCategoryById(int id)
+        {
+            var result = await _categoryUseCase.GetCategoryById(id);
+            if (result.IsSuccess.GetValueOrDefault())
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateCategoryById(string name, int id)
+        {
+           var result =  await _categoryUseCase.UpdateCategoryById(name, id);
            if (result.IsSuccess.GetValueOrDefault())
            {
+
                return Ok(result);
            }
            else
            {
-               return BadRequest();
+               return BadRequest(result.ErrorMessage);
            }
         }
     }

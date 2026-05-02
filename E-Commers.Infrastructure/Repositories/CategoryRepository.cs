@@ -42,5 +42,33 @@ namespace E_Commers.Infrastructure.Repositories
             var result = _context.Categories.ToList();
             return Result<List<CategoryEntity>>.Success(result);
         }
+
+        public async Task<Result<CategoryEntity>> GetCategoryById(int id)
+        {
+            var findCategory = await _context.Categories.FindAsync(id);
+            if (findCategory != null)
+            {
+                return Result<CategoryEntity>.Success(findCategory);
+            }
+            else
+            {
+                return Result<CategoryEntity>.Failure($"{id} Not Found");
+            }
+        }
+
+        public async Task<Result<CategoryEntity>> UpdateCategoryById(string name, int id)
+        {
+            var findCategory = await _context.Categories.FindAsync(id);
+            if (findCategory != null)
+            {
+                findCategory.Name = name;
+                await _context.SaveChangesAsync();
+                return Result<CategoryEntity>.Success(findCategory);
+            }
+            else
+            {
+                return Result<CategoryEntity>.Failure($"{id} Not Found");
+            }
+        }
     }
 }

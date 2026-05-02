@@ -12,5 +12,8 @@ namespace E_Commers.Core.Interfaces
     {
         Task<Result<CategoryEntity>> AddCategory(CategoryEntity category);
         Result<List<CategoryEntity>> GetAllCategory();
+
+        Task<Result<CategoryEntity>> GetCategoryById(int id);
+        Task<Result<CategoryEntity>> UpdateCategoryById(string name , int id);
     }
 }
