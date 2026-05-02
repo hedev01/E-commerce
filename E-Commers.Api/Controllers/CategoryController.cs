@@ -72,5 +72,19 @@ namespace E_Commers.Controllers
                return BadRequest(result.ErrorMessage);
            }
         }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteCategoryById(int id)
+        {
+            var result = await _categoryUseCase.DeleteCategoryById(id);
+            if (result.IsSuccess.GetValueOrDefault())
+            {
+                return Ok("Remove Success");
+            }
+            else
+            {
+                return BadRequest(result.ErrorMessage);
+            }
+        }
     }
 }

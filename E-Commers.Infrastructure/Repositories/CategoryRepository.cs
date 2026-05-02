@@ -70,5 +70,20 @@ namespace E_Commers.Infrastructure.Repositories
                 return Result<CategoryEntity>.Failure($"{id} Not Found");
             }
         }
+
+        public async Task<Result<bool>> DeleteCategoryById(int id)
+        {
+            var result = await _context.Categories.FindAsync(id);
+            if (result != null)
+            {
+                _context.Categories.Remove(result);
+                await _context.SaveChangesAsync();
+                return Result<bool>.Success(true);
+            }
+            else
+            {
+                return Result<bool>.Failure($"{id} Not Found");
+            }
+        }
     }
 }

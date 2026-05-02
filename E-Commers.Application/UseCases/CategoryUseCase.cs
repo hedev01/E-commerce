@@ -7,6 +7,7 @@ using E_Commers.Application.InterFaces;
 using E_Commers.Core.Entities;
 using E_Commers.Core.Interfaces;
 using E_Commers.Core.Model;
+using Microsoft.Identity.Client;
 
 namespace E_Commers.Application.UseCases
 {
@@ -36,6 +37,11 @@ namespace E_Commers.Application.UseCases
         public async Task<Result<CategoryEntity>> UpdateCategoryById(string name, int id)
         {
             return await _categoryRepository.UpdateCategoryById(name, id);
+        }
+
+        public async Task<Result<bool>> DeleteCategoryById(int id)
+        {
+            return await _categoryRepository.DeleteCategoryById(id);
         }
     }
 }

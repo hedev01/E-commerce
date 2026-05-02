@@ -14,5 +14,6 @@ namespace E_Commers.Application.InterFaces
         Result<List<CategoryEntity>> GetAllCategory();
         Task<Result<CategoryEntity>> GetCategoryById(int id);
         Task<Result<CategoryEntity>> UpdateCategoryById(string name, int id);
+        Task<Result<bool>> DeleteCategoryById(int id);
     }
 }
