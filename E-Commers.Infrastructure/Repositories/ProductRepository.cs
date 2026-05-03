@@ -25,5 +25,11 @@ namespace E_Commers.Infrastructure.Repositories
             await _context.SaveChangesAsync();
             return Result<ProductEntity>.Success(result.Entity);
         }
+
+        public Result<IEnumerable<ProductEntity>> GetAllProducts()
+        {
+            var result = _context.Products.ToList();
+            return Result<IEnumerable<ProductEntity>>.Success(result);
+        }
     }
 }

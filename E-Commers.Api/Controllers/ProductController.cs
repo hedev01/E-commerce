@@ -22,5 +22,13 @@ namespace E_Commers.Controllers
            var result = await _UseCase.AddProduct(entity);
            return Ok(result);
         }
+
+        [HttpGet]
+        public IActionResult GetAllProduct()
+        {
+            var result = _UseCase.GetAllProducts();
+            return Ok(result);
+        }
+
     }
 }

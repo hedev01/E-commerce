@@ -21,5 +21,10 @@ namespace E_Commers.Application.UseCases
         {
             return await _repository.AddProduct(entity);
         }
+
+        public Result<IEnumerable<ProductEntity>> GetAllProducts()
+        {
+            return _repository.GetAllProducts();
+        }
     }
 }

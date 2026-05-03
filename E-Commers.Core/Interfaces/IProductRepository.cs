@@ -11,5 +11,6 @@ namespace E_Commers.Core.Interfaces
     public interface IProductRepository
     {
         Task<Result<ProductEntity>> AddProduct(ProductEntity entity);
+        Result<IEnumerable<ProductEntity>> GetAllProducts();
     }
 }

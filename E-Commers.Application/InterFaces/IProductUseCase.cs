@@ -11,5 +11,6 @@ namespace E_Commers.Application.InterFaces
     public interface IProductUseCase
     {
         Task<Result<ProductEntity>> AddProduct(ProductEntity entity);
+        Result<IEnumerable<ProductEntity>> GetAllProducts();
     }
 }
