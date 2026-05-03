@@ -30,5 +30,18 @@ namespace E_Commers.Controllers
             return Ok(result);
         }
 
+        [HttpPut]
+        public async Task<IActionResult> UpdateProduct(ProductEntity entity)
+        {
+            var result = await _UseCase.UpdateProduct(entity);
+            if (result.IsSuccess.GetValueOrDefault())
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return NotFound(result.ErrorMessage);
+            }
+        }
     }
 }

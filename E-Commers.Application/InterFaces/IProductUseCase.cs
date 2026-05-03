@@ -12,5 +12,6 @@ namespace E_Commers.Application.InterFaces
     {
         Task<Result<ProductEntity>> AddProduct(ProductEntity entity);
         Result<IEnumerable<ProductEntity>> GetAllProducts();
+        Task<Result<ProductEntity>> UpdateProduct(ProductEntity entity);
     }
 }

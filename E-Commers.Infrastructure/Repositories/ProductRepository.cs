@@ -31,5 +31,22 @@ namespace E_Commers.Infrastructure.Repositories
             var result = _context.Products.ToList();
             return Result<IEnumerable<ProductEntity>>.Success(result);
         }
+
+        public async Task<Result<ProductEntity>> UpdateProduct(ProductEntity entity)
+        {
+           var findProduct = await  _context.Products.FindAsync(entity.Id);
+           if (findProduct != null)
+           {
+               findProduct.Name = entity.Name;
+               findProduct.Description = entity.Description;
+               findProduct.Price = entity.Price;
+               await _context.SaveChangesAsync();
+               return Result<ProductEntity>.Success(findProduct);
+           }
+           else
+           {
+               return Result<ProductEntity>.Failure($"{entity.Id} Not Found");
+           }
+        }
     }
 }

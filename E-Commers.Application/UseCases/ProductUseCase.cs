@@ -26,5 +26,10 @@ namespace E_Commers.Application.UseCases
         {
             return _repository.GetAllProducts();
         }
+
+        public async Task<Result<ProductEntity>> UpdateProduct(ProductEntity entity)
+        {
+            return await _repository.UpdateProduct(entity);
+        }
     }
 }
