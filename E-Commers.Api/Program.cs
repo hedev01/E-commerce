@@ -40,6 +40,9 @@ builder.Services.AddScoped<IJwtUseCase, JwtUseCase>();
 
 
 builder.Services.AddScoped<IAccountUseCases, AccountUseCases>();
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductUseCase, ProductUseCase>();
 //builder.Services.AddScoped<AccountUseCases>();
 builder.Services.AddDbContext<Context>(option => {
     option

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("E-Commers.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fd5377c73d4a1f749692f2d832f53f07bd8d1ad6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0b249b3b94f9d3f85cde9046f6b431404dd96453")]
 [assembly: System.Reflection.AssemblyProductAttribute("E-Commers.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("E-Commers.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
